@@ -1,0 +1,12 @@
+name: Second Practice
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  print-date:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show date
+        run: date
