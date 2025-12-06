@@ -1,0 +1,16 @@
+name: only-k8s-files
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: only-k8s-files folder
+        run: |
+           .k8s/
