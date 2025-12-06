@@ -29,3 +29,6 @@ jobs:
           context: .
           push: true
           tags: gowkrrish/my-python-app:${{ github.ref_name }}
+
+      - name: Run tests inside container
+        run: docker run --rm gowkrrish/my-python-app:test
