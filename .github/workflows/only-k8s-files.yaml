@@ -3,6 +3,8 @@ name: only-k8s-files
 on:
   push:
     branches: [ main ]
+    paths:
+      - "k8s/**"
 
 jobs:
   say-hello:
@@ -11,6 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: only-k8s-files folder
+      - name: list of files only-k8s-files folder
         run: |
-           .k8s/
+           ls -R .k8s/
+      
