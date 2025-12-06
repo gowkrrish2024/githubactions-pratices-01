@@ -28,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: my-python-app:${{ github.ref_name }}
+          tags: gowkrrish/my-python-app:${{ github.ref_name }}
