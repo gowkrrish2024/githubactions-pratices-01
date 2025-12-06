@@ -11,18 +11,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: echo test files
+      - name: Setup up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: |
-          echo "Building the project..."
+          python -m pip install --upgrade pip
+          pip install pytest
           
-
-
-  test:
+ test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: test step
-        run: |
-          echo "Running tests..."
-          needs: build
+      - name: Run pytest
+        run: pytest
+          
 
     
