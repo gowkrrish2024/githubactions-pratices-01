@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: list of files only-k8s-files folder
+      - name: list files only-k8s-files folder
         run: |
            ls -R k8s
       
