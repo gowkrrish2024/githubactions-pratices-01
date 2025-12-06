@@ -1,18 +1,38 @@
-name: Build and Push Docker Image
+name: Docker Build and Push the Image
 
 on:
   push:
-    branches: [ feature/docker-ci ]
+    branches: [ feature/full-ci-1 ]
+  pull_request:
+    branches: [ feature/full-ci-1 ]
+
 
 jobs:
+  PythonBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Python Setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+    
   docker-build-and-push:
+    needs: PythonBuild
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Docker Buildx
+      - name: Set up the Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to Docker Hub
@@ -21,9 +41,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push the Docker image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: gowkrrish/githubactions-pratices-01:latest
+          tags: gowkrrish/my-python-app:feature-full-ci-1
