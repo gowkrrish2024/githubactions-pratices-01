@@ -2,7 +2,9 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ feature/docker-ci ]
+    branches: [ main ]
+    tags:
+      - 'v*'
 
 jobs:
   docker-build-and-push:
@@ -26,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: gowkrrish/githubactions-pratices-01:latest
+          tags: my-python-app:${{ github.ref_name }} .
