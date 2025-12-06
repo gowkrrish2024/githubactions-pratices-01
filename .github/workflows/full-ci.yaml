@@ -47,5 +47,5 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          push: false
+          push: true
           tags: gowkrrish/my-python-app:feature-full-ci
