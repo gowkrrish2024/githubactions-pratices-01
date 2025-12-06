@@ -1,8 +1,7 @@
 name: Python Matrix Build and Test
 on:
   push:
-    on:
-      branches: [ main ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
