@@ -15,5 +15,5 @@ jobs:
 
       - name: list of files only-k8s-files folder
         run: |
-           ls -R .k8s
+           ls -R k8s
       
